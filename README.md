@@ -17,7 +17,7 @@ per station to predict daily crowd levels based on date features.
 
 ## Dataset
 - Source: CTA Ridership — L Station Entries Daily Totals
-- Dataset Link: [CTA Ridership — L Station Entries Daily Totals](https://www.kaggle.com/datasets/chicago/chicago-transit-authority-cta-data)
+- Dataset Link: [CTA Ridership — L Station Entries Daily Totals](https://drive.google.com/uc?export=download&id=1M3m2O91hrxGsrYR0eDvSMLSS9cxggpcT)
 - Records: 962,546 rows
 - Stations: 147
 - Date Range: 2001-01-01 to 2019-06-30
@@ -50,12 +50,42 @@ per station to predict daily crowd levels based on date features.
 - Stations with sparse data: historical average used
 
 ## Power BI Dashboard Visuals
-- KPI Cards: Total Stations, Total Forecasted Riders
-- Line Chart: Actual vs Forecasted Passengers over time
-- Bar Chart: Top 10 Busiest Stations
-- Donut Chart: Ridership by Day Category
-- Table: Detailed Forecast by Station
-- Radar Chart: Average Passengers by Day of Week
+
+### KPI Cards
+- **Total Stations** — Count of stations included in the forecast report
+- **Total Forecasted Riders** — Sum of estimated passengers across all stations
+- **Day Category** — Day type of the predicted date (Weekday / Saturday / Sunday)
+- **Total Estimated Passengers** — Overall passenger load for the selected date
+
+### Charts and Visuals
+- **Area Chart** — Historical Ridership vs Model Prediction Accuracy
+  - Shows Actual Passengers vs Forecasted Crowd over time from 2001 to 2019
+  - X-axis: Date | Y-axis: Passenger Count
+
+- **Donut Chart** — Ridership by Day Category
+  - Breakdown of average rides across Weekday, Saturday and Sunday/Holiday
+
+- **Scatter Chart** — Correlation: Actual vs Predicted Ridership
+  - Plots Actual Passengers against Forecasted Crowd per station
+  - Color coded by Day Name to show day-of-week patterns
+
+- **Gauge Chart** — System Load vs Historical Average
+  - Compares total estimated passengers for the predicted date
+    against the overall historical average
+
+- **Map Visual** — Geographic Distribution
+  - Plots all 147 stations on a map
+  - Bubble size represents estimated passengers per station
+
+### Tables
+- **Detailed Forecast by Station** — Station Name and Estimated Passengers
+  for the predicted date across all stations
+
+- **Historical Records: All-Time Busiest Stations** — Top 10 stations
+  ranked by total all-time ridership
+
+### Slicer
+- **Station Navigator** — Filter all visuals by selecting a specific station
 
 ## How to Run
 1. Open VS Code in the project folder
