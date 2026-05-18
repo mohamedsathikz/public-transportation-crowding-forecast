@@ -1,4 +1,4 @@
-# CTA Crowding Forecast
+# Public Transportation Crowding Forecast
 End-to-end public transportation crowding forecast project using Python, PostgreSQL, and Power BI. 
 Includes data preprocessing, Random Forest model training per station, SQL business 
 queries, estimated passenger prediction for any date, and an interactive dashboard 
