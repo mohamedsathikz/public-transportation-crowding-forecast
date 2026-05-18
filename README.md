@@ -17,7 +17,7 @@ per station to predict daily crowd levels based on date features.
 
 ## Dataset
 - Source: CTA Ridership — L Station Entries Daily Totals
-- Dataset Link: [CTA Ridership — L Station Entries Daily Totals](https://drive.google.com/uc?export=download&id=1M3m2O91hrxGsrYR0eDvSMLSS9cxggpcT)
+- Dataset Link: [Sample Dataset for Model](https://drive.google.com/uc?export=download&id=1M3m2O91hrxGsrYR0eDvSMLSS9cxggpcT)
 - Records: 962,546 rows
 - Stations: 147
 - Date Range: 2001-01-01 to 2019-06-30
