@@ -49,43 +49,57 @@ per station to predict daily crowd levels based on date features.
 - Features: year, month, day, day_of_week, day_type_num
 - Stations with sparse data: historical average used
 
-## Power BI Dashboard Visuals
+## Power BI Dashboard
 
-### KPI Cards
-- **Total Stations** — Count of stations included in the forecast report
-- **Total Forecasted Riders** — Sum of estimated passengers across all stations
-- **Day Category** — Day type of the predicted date (Weekday / Saturday / Sunday)
-- **Total Estimated Passengers** — Overall passenger load for the selected date
+The report (`CTA_Forecast_Dashboard.pbix`) is a **6-page dashboard**: Overview, Live Forecast, Stations, History, Analytics, and Reports. Every page shares a common slicer set (Station, Day Category, Year) so filtering carries across the story.
 
-### Charts and Visuals
-- **Area Chart** — Historical Ridership vs Model Prediction Accuracy
-  - Shows Actual Passengers vs Forecasted Crowd over time from 2001 to 2019
-  - X-axis: Date | Y-axis: Passenger Count
+### Page 1 — Overview
+**KPI Cards**
+- **Total Stations** — Count of stations included in the forecast (`CountNonNull(forecast_report.Station ID)`)
+- **Total Estimated Passengers** — Sum of estimated passengers for the selected date (`Sum(forecast_report.Estimated Passengers)`)
+- **Total Forecasted Crowd** — Sum of model-predicted ridership (`Sum(final_forecast_results.Forecasted Crowd)`)
+- **Total Actual Passengers** — Sum of historical actual ridership (`Sum(final_forecast_results.Actual Passengers)`)
+- **Day Category** — Day type of the predicted date (Weekday / Saturday / Sunday-Holiday)
 
-- **Donut Chart** — Ridership by Day Category
-  - Breakdown of average rides across Weekday, Saturday and Sunday/Holiday
+**Charts and Visuals**
+- **Area Chart — "Historical Ridership vs Model Prediction Accuracy"**: Actual Passengers vs Forecasted Crowd over time (2001–2019)
+- **Map — "Geographic Station Distribution"**: All stations plotted, bubble size = Estimated Passengers, tooltip shows station count
+- **Bar Chart — "Top 10 Stations by All-Time Ridership"**: Top 10 stations by total historical rides *(this is a clustered bar chart, not a table)*
+- **Gauge — "System Load"**: Total Estimated Passengers vs the historical average ride target
+- **Scatter Chart — "Actual vs Predicted"**: Actual Passengers (X) vs Forecasted Crowd (Y) per station, colored by Day Name
+- **Donut Chart — "Ridership by Day Category"**: Average rides split across Weekday / Saturday / Sunday-Holiday
 
-- **Scatter Chart** — Correlation: Actual vs Predicted Ridership
-  - Plots Actual Passengers against Forecasted Crowd per station
-  - Color coded by Day Name to show day-of-week patterns
+**Table**
+- **"Detailed Forecast by Station"** — Station Name and Estimated Passengers for the predicted date
 
-- **Gauge Chart** — System Load vs Historical Average
-  - Compares total estimated passengers for the predicted date
-    against the overall historical average
+**Slicer**
+- **Station Navigator** — filters all visuals by station
 
-- **Map Visual** — Geographic Distribution
-  - Plots all 147 stations on a map
-  - Bubble size represents estimated passengers per station
+### Page 2 — Live Forecast
+- **KPI Cards**: Total Forecasted, Busiest Station, Quietest Station, Stations Covered
+- **Table — "Estimated Passengers per Station — Full Ranking"**: Station Name, Station ID, Estimated Passengers, and an in-cell Ridership Bar (data bar visual)
 
-### Tables
-- **Detailed Forecast by Station** — Station Name and Estimated Passengers
-  for the predicted date across all stations
+### Page 3 — Stations
+- **KPI Cards**: Actual Passengers, Dynamic Peak Year, Forecasted Crowd, vs Network Average
+- **Column Chart — "Ridership by Day of Week"**: Average rides per day, Monday–Sunday
+- **Area Chart — "Year-over-Year Trend"**: Actual Passengers by year, with a peak-year marker
+- **100% Stacked Bar — "Station vs Network Average Comparison"**: Selected station's rides vs the network average
 
-- **Historical Records: All-Time Busiest Stations** — Top 10 stations
-  ranked by total all-time ridership
+### Page 4 — History
+- **Area Chart — "Full Historical Ridership vs Forecast Accuracy — 2001 to 2019"**: Forecasted Crowd vs Actual Passengers across the full history
+- **Pivot Table — "Monthly Ridership Heatmap"**: Years × months, values = Actual Passengers
+- **Column Chart — "Year-over-Year Comparison"**: Forecasted Crowd by year
+- **Area Chart — "Seasonal Pattern"**: Average rides per day by month
 
-### Slicer
-- **Station Navigator** — Filter all visuals by selecting a specific station
+### Page 5 — Analytics
+- **Scatter Chart — "Actual vs Predicted Accuracy - All Stations"**: same X/Y/color scheme as the Overview scatter, dedicated full-page view
+- **Donut Chart — "Ridership by Day Category"**
+- **Gauge — "System Load"**: Estimated Passengers vs Actual Passengers target
+- **Table — "Station-Level Analytics — Accuracy & Performance Metrics"**: Actual vs Forecasted, Difference, and Accuracy % per station
+
+### Page 6 — Reports
+- **Table — "Complete Output Files Summary"**: File Name, Type, Row Count, Source, Status for each exported dataset
+- **KPI Cards**: Final Forecast Results (rows exported), Forecast Report (stations · selected date), Top 10 Stations (busiest all-time), Avg Rides by Day Type (categories analyzed), Model Performance (overall accuracy), Database Summary
 
 ## How to Run
 1. Open VS Code in the project folder
