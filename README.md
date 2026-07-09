@@ -63,8 +63,8 @@ The report (`CTA_Forecast_Dashboard.pbix`) is a **6-page dashboard**: Overview, 
 
 **Charts and Visuals**
 - **Area Chart — "Historical Ridership vs Model Prediction Accuracy"**: Actual Passengers vs Forecasted Crowd over time (2001–2019)
-- **Map — "Geographic Station Distribution"**: All stations plotted, bubble size = Estimated Passengers, tooltip shows station count
 - **Bar Chart — "Top 10 Stations by All-Time Ridership"**: Top 10 stations by total historical rides *(this is a clustered bar chart, not a table)*
+- **Area Chart — "Year-over-Year Trend"**: Actual Passengers by year, with a peak-year marker
 - **Gauge — "System Load"**: Total Estimated Passengers vs the historical average ride target
 - **Scatter Chart — "Actual vs Predicted"**: Actual Passengers (X) vs Forecasted Crowd (Y) per station, colored by Day Name
 - **Donut Chart — "Ridership by Day Category"**: Average rides split across Weekday / Saturday / Sunday-Holiday
